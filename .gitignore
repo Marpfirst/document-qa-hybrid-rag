@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+api/data/
+api/.venv/
+node_modules/
+web/.next/
+web/out/
+.DS_Store
+corpus/*.pdf
+corpus/*.docx

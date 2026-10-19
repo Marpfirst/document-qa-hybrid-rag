@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+/*
+ * Two accents on purpose:
+ *   accent (indigo) — the product: brand, buttons, active state
+ *   cite   (green)  — grounding: citations and retrieved evidence
+ *
+ * Keeping them separate means a citation never reads as "just another button",
+ * which matters when the whole promise of the app is that answers are traceable.
+ */
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --ink: #1f2937;
+  --ink-soft: #6b7280;
+  --line: #e5e7eb;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-soft: #eef2ff;
+  --cite: #15803d;
+  --cite-soft: #f0fdf4;
+  --cite-line: #bbf7d0;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --danger: #b91c1c;
+  --danger-soft: #fee2e2;
+}
+
+/*
+ * Dark values live in a mixin-ish custom property block so the OS preference
+ * and the explicit toggle can share one definition. `data-theme` wins over the
+ * media query in both directions, which is what the toggle needs.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1117;
+    --surface: #171a21;
+    --ink: #e5e7eb;
+    --ink-soft: #9ca3af;
+    --line: #272b35;
+    --accent: #818cf8;
+    --accent-hover: #a5b4fc;
+    --accent-soft: #20223a;
+    --cite: #4ade80;
+    --cite-soft: #16241c;
+    --cite-line: #1f6b3d;
+    --warn: #fbbf24;
+    --warn-soft: #34290f;
+    --danger: #f87171;
+    --danger-soft: #3a1d1d;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f1117;
+  --surface: #171a21;
+  --ink: #e5e7eb;
+  --ink-soft: #9ca3af;
+  --line: #272b35;
+  --accent: #818cf8;
+  --accent-hover: #a5b4fc;
+  --accent-soft: #20223a;
+  --cite: #4ade80;
+  --cite-soft: #16241c;
+  --cite-line: #1f6b3d;
+  --warn: #fbbf24;
+  --warn-soft: #34290f;
+  --danger: #f87171;
+  --danger-soft: #3a1d1d;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-cite: var(--cite);
+  --color-cite-soft: var(--cite-soft);
+  --color-cite-line: var(--cite-line);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Tailwind 4 dropped the preflight rule that gave buttons a pointer cursor, so
+ * every control here would otherwise keep the default arrow and read as
+ * non-interactive.
+ */
+button:not(:disabled),
+[role="button"]:not(:disabled),
+label[for],
+summary {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 1.6s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.18s ease-out;
+}
+
+/* The drawer picks its direction from which edge it is pinned to. */
+.animate-slide-in.left-0 {
+  animation: slide-in-left 0.22s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.animate-slide-in.right-0 {
+  animation: slide-in-right 0.22s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-soft,
+  .animate-fade-in,
+  .animate-slide-in.left-0,
+  .animate-slide-in.right-0 {
+    animation: none;
+  }
+}
