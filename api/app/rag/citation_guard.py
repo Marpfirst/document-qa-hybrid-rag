@@ -25,6 +25,12 @@ CITATION_PATTERN = re.compile(
 )
 _REF_NUMBER = re.compile(r"[0-9]+")
 
+# Some models (gpt-oss) write the tag in full-width (CJK) brackets, e.g. U+3010 doc:1 U+3011.
+# Fold them to ASCII first so the tag is validated like any other.
+_BRACKETS = str.maketrans(
+    {0x3010: "[", 0x3011: "]", 0xFF3B: "[", 0xFF3D: "]", 0x3014: "[", 0x3015: "]"}
+)
+
 MAX_QUOTE_CHARS = 400
 
 
@@ -82,7 +88,7 @@ def validate(answer: str, contexts: list[RetrievedChunk]) -> GuardResult:
             return ""
         return "".join(f"[doc:{r}]" for r in kept)
 
-    cleaned = CITATION_PATTERN.sub(replace, answer)
+    cleaned = CITATION_PATTERN.sub(replace, answer.translate(_BRACKETS))
     # Collapse whitespace left behind by removed tags, without touching newlines.
     cleaned = re.sub(r"[ \t]{2,}", " ", cleaned)
     cleaned = re.sub(r"[ \t]+([.,;:!?])", r"\1", cleaned)

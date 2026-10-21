@@ -104,3 +104,12 @@ def test_long_context_quote_is_truncated_for_the_popover():
     result = validate("Lihat [doc:1].", [ctx(1, long_text)])
     assert len(result.citations[0].quote) <= 401
     assert result.citations[0].quote.endswith("…")
+
+
+def test_full_width_brackets_are_validated_like_ascii_ones():
+    open_, close = chr(0x3010), chr(0x3011)
+    result = validate(f"Cuti tahunan 12 hari {open_}doc:1{close}, bukan {open_}doc:9{close}.", [ctx(1)])
+    assert "[doc:1]" in result.text
+    assert "doc:9" not in result.text
+    assert open_ not in result.text
+    assert (result.accepted, result.rejected) == (1, 1)

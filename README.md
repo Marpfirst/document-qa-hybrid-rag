@@ -113,7 +113,7 @@ Retrieval, answerable questions only, top 8 chunks:
 
 Answers (Groq `openai/gpt-oss-120b`, scored by string match, no LLM judge):
 35/35 answerable correct, 8/8 abstained when the answer is not in the documents,
-0 false abstentions, 38 citations accepted and 0 rejected by the guard, median
+0 false abstentions, 41 citations accepted and 0 rejected by the guard, median
 latency 3.3 s (p90 6.0 s).
 
 What it shows, and what it does not:
@@ -131,14 +131,15 @@ What it shows, and what it does not:
   Every answer is kept in `eval/results/latest.json` so this can be checked.
 - The failover chain was not exercised: the Gemini key available when I ran
   this was invalid, so all answers came from the Groq fallback.
-- One thing the guard does not cover: gpt-oss sometimes writes full-width
-  brackets (`【doc:1】`), which the citation parser does not recognise, so 2 of 35
-  answers had no accepted citation.
+- The first run exposed a guard gap: gpt-oss writes the tag in full-width
+  brackets, which the parser did not recognise (2 of 35 answers lost their
+  citation). The guard now folds them to ASCII before validating; the numbers
+  above are from the re-run.
 
 ### Tests
 
 ```bash
-cd api && uv run pytest -q      # 61 tests
+cd api && uv run pytest -q      # 62 tests
 ```
 
 Coverage: router verdicts (4 categories), PDF/DOCX parsers against real
