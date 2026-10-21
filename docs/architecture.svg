@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="1200" height="780" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Document Q&amp;A architecture</title>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .t{font-size:14px;font-weight:600;fill:#0f172a}
+      .s{font-size:11.5px;fill:#475569}
+      .h{font-size:13px;font-weight:700;fill:#334155;letter-spacing:.08em}
+      .box{fill:#ffffff;stroke:#cbd5e1;stroke-width:1.2}
+      .key{fill:#ecfdf5;stroke:#34d399;stroke-width:1.4}
+      .store{fill:#eff6ff;stroke:#60a5fa;stroke-width:1.4}
+      .llm{fill:#fef3c7;stroke:#f59e0b;stroke-width:1.4}
+      .guard{fill:#fdf2f8;stroke:#ec4899;stroke-width:1.4}
+      .lane{fill:#f8fafc;stroke:#e2e8f0}
+      .ln{stroke:#64748b;stroke-width:1.5;fill:none}
+      .dash{stroke:#94a3b8;stroke-width:1.2;fill:none;stroke-dasharray:5 4}
+    </style>
+  </defs>
+  <rect width="1200" height="780" fill="#ffffff"/>
+  <text x="40" y="44" style="font-size:22px;font-weight:700;fill:#0f172a">Document Q&amp;A: how a question becomes a cited answer</text>
+  <text x="40" y="66" class="s">FastAPI backend, Next.js frontend, embedded Qdrant. Green = where answer quality is decided, pink = server-side checks.</text>
+
+  <!-- INGEST LANE -->
+  <rect x="30" y="86" width="1140" height="190" rx="10" class="lane"/>
+  <text x="48" y="112" class="h">1  UPLOAD AND INDEX  (background task, status polled by the browser)</text>
+
+  <rect x="48" y="130" width="150" height="104" rx="8" class="box"/>
+  <text x="62" y="154" class="t">Browser upload</text>
+  <text x="62" y="174" class="s">PDF or DOCX, up to 3</text>
+  <text x="62" y="190" class="s">files per workspace</text>
+
+  <rect x="234" y="130" width="150" height="104" rx="8" class="box"/>
+  <text x="248" y="154" class="t">Validate</text>
+  <text x="248" y="174" class="s">content sniffing, 5 MB cap,</text>
+  <text x="248" y="190" class="s">zip-bomb check, 100 pages,</text>
+  <text x="248" y="206" class="s">safe display name</text>
+
+  <rect x="420" y="130" width="150" height="104" rx="8" class="box"/>
+  <text x="434" y="154" class="t">Parse</text>
+  <text x="434" y="174" class="s">DOCX: heading tree</text>
+  <text x="434" y="190" class="s">PDF: verdict per page</text>
+  <text x="434" y="206" class="s">digital, broken, scanned</text>
+
+  <rect x="606" y="130" width="150" height="104" rx="8" class="key"/>
+  <text x="620" y="154" class="t">Section chunks</text>
+  <text x="620" y="174" class="s">~800 tokens, 100 overlap,</text>
+  <text x="620" y="190" class="s">heading path stored and</text>
+  <text x="620" y="206" class="s">embedded with the text</text>
+
+  <rect x="792" y="130" width="150" height="104" rx="8" class="box"/>
+  <text x="806" y="154" class="t">Two embeddings</text>
+  <text x="806" y="174" class="s">dense: multilingual MiniLM</text>
+  <text x="806" y="190" class="s">(384-d)</text>
+  <text x="806" y="206" class="s">sparse: BM25</text>
+
+  <rect x="978" y="130" width="174" height="104" rx="8" class="store"/>
+  <text x="992" y="154" class="t">Qdrant (embedded)</text>
+  <text x="992" y="174" class="s">one point per chunk, payload:</text>
+  <text x="992" y="190" class="s">workspace_id, doc, heading</text>
+  <text x="992" y="206" class="s">path, page, expires_at</text>
+
+  <path class="ln" d="M198 182 H234" marker-end="url(#arr)"/>
+  <path class="ln" d="M384 182 H420" marker-end="url(#arr)"/>
+  <path class="ln" d="M570 182 H606" marker-end="url(#arr)"/>
+  <path class="ln" d="M756 182 H792" marker-end="url(#arr)"/>
+  <path class="ln" d="M942 182 H978" marker-end="url(#arr)"/>
+
+  <!-- ASK LANE -->
+  <rect x="30" y="296" width="1140" height="300" rx="10" class="lane"/>
+  <text x="48" y="322" class="h">2  ASK  (one streaming request; the server sends events: retrieval, delta, citation, done)</text>
+
+  <rect x="48" y="340" width="138" height="96" rx="8" class="box"/>
+  <text x="60" y="364" class="t">Question</text>
+  <text x="60" y="384" class="s">plus last turns of the</text>
+  <text x="60" y="400" class="s">conversation. Follow-ups:</text>
+  <text x="60" y="416" class="s">previous question appended</text>
+
+  <rect x="222" y="340" width="176" height="96" rx="8" class="key"/>
+  <text x="234" y="364" class="t">Hybrid search</text>
+  <text x="234" y="384" class="s">dense top 50  +  BM25 top 50,</text>
+  <text x="234" y="400" class="s">both branches filtered by</text>
+  <text x="234" y="416" class="s">workspace_id</text>
+
+  <rect x="434" y="340" width="130" height="96" rx="8" class="key"/>
+  <text x="446" y="364" class="t">RRF fusion</text>
+  <text x="446" y="384" class="s">merge ranks, keep</text>
+  <text x="446" y="400" class="s">top 30 candidates</text>
+
+  <rect x="600" y="340" width="150" height="96" rx="8" class="key"/>
+  <text x="612" y="364" class="t">Rerank</text>
+  <text x="612" y="384" class="s">cross-encoder reads query</text>
+  <text x="612" y="400" class="s">and chunk together,</text>
+  <text x="612" y="416" class="s">keeps the best 8</text>
+
+  <rect x="786" y="340" width="176" height="96" rx="8" class="llm"/>
+  <text x="798" y="364" class="t">LLM, streamed</text>
+  <text x="798" y="384" class="s">Gemini first; if it fails</text>
+  <text x="798" y="400" class="s">before output, fall back</text>
+  <text x="798" y="416" class="s">to Groq. Tags claims [doc:N]</text>
+
+  <rect x="998" y="340" width="154" height="96" rx="8" class="guard"/>
+  <text x="1010" y="364" class="t">Citation guard</text>
+  <text x="1010" y="384" class="s">each [doc:N] checked vs.</text>
+  <text x="1010" y="400" class="s">the 8 sent chunks; fakes</text>
+  <text x="1010" y="416" class="s">are dropped and counted</text>
+
+  <path class="ln" d="M186 388 H222" marker-end="url(#arr)"/>
+  <path class="ln" d="M398 388 H434" marker-end="url(#arr)"/>
+  <path class="ln" d="M564 388 H600" marker-end="url(#arr)"/>
+  <path class="ln" d="M750 388 H786" marker-end="url(#arr)"/>
+  <path class="ln" d="M962 388 H998" marker-end="url(#arr)"/>
+
+  <!-- Qdrant link -->
+  <path class="dash" d="M1065 234 V262 H310 V340" marker-end="url(#arr)"/>
+  <text x="560" y="256" class="s">searched at question time</text>
+
+  <!-- answer -->
+  <rect x="786" y="474" width="366" height="86" rx="8" class="box"/>
+  <text x="800" y="498" class="t">Answer shown to the user</text>
+  <text x="800" y="518" class="s">cleaned text with only verified citations, each linking to</text>
+  <text x="800" y="534" class="s">document, heading path and page, plus the number of</text>
+  <text x="800" y="550" class="s">rejected citations</text>
+  <path class="ln" d="M1075 436 V474" marker-end="url(#arr)"/>
+
+  <!-- retrieval trace -->
+  <rect x="222" y="474" width="528" height="86" rx="8" class="box"/>
+  <text x="236" y="498" class="t">Retrieval trace, sent before the first word of the answer</text>
+  <text x="236" y="518" class="s">the query used and the 8 chunks with their scores, so the interface can show</text>
+  <text x="236" y="534" class="s">what the model was given. If nothing is retrieved, the reply says so and the</text>
+  <text x="236" y="550" class="s">model is not called.</text>
+  <path class="dash" d="M675 436 V474" marker-end="url(#arr)"/>
+
+  <!-- GUARDS -->
+  <rect x="30" y="616" width="1140" height="132" rx="10" class="lane"/>
+  <text x="48" y="642" class="h">3  AROUND BOTH FLOWS</text>
+
+  <rect x="48" y="656" width="262" height="76" rx="8" class="box"/>
+  <text x="60" y="678" class="t">Workspace isolation</text>
+  <text x="60" y="698" class="s">HMAC-signed cookie gives the workspace_id.</text>
+  <text x="60" y="714" class="s">Never taken from the request body.</text>
+
+  <rect x="326" y="656" width="262" height="76" rx="8" class="box"/>
+  <text x="338" y="678" class="t">Abuse limits</text>
+  <text x="338" y="698" class="s">per-IP rate limits on upload and chat,</text>
+  <text x="338" y="714" class="s">plus a daily budget of LLM calls.</text>
+
+  <rect x="604" y="656" width="262" height="76" rx="8" class="box"/>
+  <text x="616" y="678" class="t">Bounded storage</text>
+  <text x="616" y="698" class="s">chunks expire after 24 hours; a sweeper</text>
+  <text x="616" y="714" class="s">deletes them every 15 minutes.</text>
+
+  <rect x="882" y="656" width="270" height="76" rx="8" class="box"/>
+  <text x="894" y="678" class="t">Evaluation harness (api/eval)</text>
+  <text x="894" y="698" class="s">43 questions, 4 retrieval settings,</text>
+  <text x="894" y="714" class="s">answers, citations and latency scored.</text>
+</svg>

@@ -36,6 +36,10 @@ from the request body, and is filtered in both retrieval branches.
 
 ---
 
+## Architecture
+
+![Architecture: upload and index, ask, and the checks around both](docs/architecture.svg)
+
 ## Stack
 
 | Layer | Choice |
