@@ -11,3 +11,8 @@ web/out/
 .DS_Store
 corpus/*.pdf
 corpus/*.docx
+
+# evaluation scratch (rebuilt on every run)
+api/eval/.qdrant/
+api/eval/.cache/
+api/eval/.run.log

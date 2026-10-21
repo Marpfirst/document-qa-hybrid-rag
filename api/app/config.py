@@ -34,7 +34,10 @@ class Settings(BaseSettings):
     gemini_model: str = "gemini-3.6-flash"
 
     groq_api_key: str = ""
-    groq_model: str = "llama-3.3-70b-versatile"
+    # llama-3.3-70b-versatile was retired from Groq's catalog (the API answers 404
+    # model_not_found), which silently turned the failover into a no-op. Check
+    # what the key can use with: GET https://api.groq.com/openai/v1/models
+    groq_model: str = "openai/gpt-oss-120b"
 
     anthropic_api_key: str = ""
     anthropic_model: str = "claude-opus-5"

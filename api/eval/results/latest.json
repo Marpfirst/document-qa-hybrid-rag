@@ -1,0 +1,802 @@
+{
+  "summary": {
+    "corpus": {
+      "contoh-sop-cuti.docx": 11,
+      "sop-perjalanan-dinas.docx": 10,
+      "sop-keamanan-informasi.docx": 12,
+      "sop-orientasi-karyawan.docx": 10
+    },
+    "questions": 43,
+    "answerable": 35,
+    "retrieval": {
+      "dense": {
+        "overall": {
+          "n": 35,
+          "hit@1": 0.714,
+          "hit@3": 0.886,
+          "hit@8": 0.971,
+          "mrr": 0.82
+        },
+        "by_category": {
+          "confusable": {
+            "n": 19,
+            "hit@1": 0.789,
+            "hit@3": 0.895,
+            "hit@8": 0.947,
+            "mrr": 0.855
+          },
+          "english": {
+            "n": 4,
+            "hit@1": 0.75,
+            "hit@3": 0.75,
+            "hit@8": 1.0,
+            "mrr": 0.8
+          },
+          "exact_code": {
+            "n": 4,
+            "hit@1": 0.5,
+            "hit@3": 0.75,
+            "hit@8": 1.0,
+            "mrr": 0.688
+          },
+          "paraphrase": {
+            "n": 8,
+            "hit@1": 0.625,
+            "hit@3": 1.0,
+            "hit@8": 1.0,
+            "mrr": 0.812
+          }
+        }
+      },
+      "bm25": {
+        "overall": {
+          "n": 35,
+          "hit@1": 0.714,
+          "hit@3": 0.771,
+          "hit@8": 0.829,
+          "mrr": 0.753
+        },
+        "by_category": {
+          "confusable": {
+            "n": 19,
+            "hit@1": 0.947,
+            "hit@3": 1.0,
+            "hit@8": 1.0,
+            "mrr": 0.974
+          },
+          "english": {
+            "n": 4,
+            "hit@1": 0.0,
+            "hit@3": 0.0,
+            "hit@8": 0.0,
+            "mrr": 0.0
+          },
+          "exact_code": {
+            "n": 4,
+            "hit@1": 1.0,
+            "hit@3": 1.0,
+            "hit@8": 1.0,
+            "mrr": 1.0
+          },
+          "paraphrase": {
+            "n": 8,
+            "hit@1": 0.375,
+            "hit@3": 0.5,
+            "hit@8": 0.75,
+            "mrr": 0.483
+          }
+        }
+      },
+      "rrf": {
+        "overall": {
+          "n": 35,
+          "hit@1": 0.714,
+          "hit@3": 0.914,
+          "hit@8": 1.0,
+          "mrr": 0.83
+        },
+        "by_category": {
+          "confusable": {
+            "n": 19,
+            "hit@1": 0.842,
+            "hit@3": 0.947,
+            "hit@8": 1.0,
+            "mrr": 0.908
+          },
+          "english": {
+            "n": 4,
+            "hit@1": 0.5,
+            "hit@3": 0.75,
+            "hit@8": 1.0,
+            "mrr": 0.675
+          },
+          "exact_code": {
+            "n": 4,
+            "hit@1": 0.5,
+            "hit@3": 1.0,
+            "hit@8": 1.0,
+            "mrr": 0.75
+          },
+          "paraphrase": {
+            "n": 8,
+            "hit@1": 0.625,
+            "hit@3": 0.875,
+            "hit@8": 1.0,
+            "mrr": 0.76
+          }
+        }
+      },
+      "rrf_rerank": {
+        "overall": {
+          "n": 35,
+          "hit@1": 0.8,
+          "hit@3": 0.971,
+          "hit@8": 1.0,
+          "mrr": 0.885
+        },
+        "by_category": {
+          "confusable": {
+            "n": 19,
+            "hit@1": 1.0,
+            "hit@3": 1.0,
+            "hit@8": 1.0,
+            "mrr": 1.0
+          },
+          "english": {
+            "n": 4,
+            "hit@1": 0.75,
+            "hit@3": 1.0,
+            "hit@8": 1.0,
+            "mrr": 0.833
+          },
+          "exact_code": {
+            "n": 4,
+            "hit@1": 0.5,
+            "hit@3": 1.0,
+            "hit@8": 1.0,
+            "mrr": 0.75
+          },
+          "paraphrase": {
+            "n": 8,
+            "hit@1": 0.5,
+            "hit@3": 0.875,
+            "hit@8": 1.0,
+            "mrr": 0.705
+          }
+        }
+      }
+    },
+    "answers": {
+      "answerable_correct": "35/35",
+      "answerable_correct_rate": 1.0,
+      "by_category": {
+        "confusable": "19/19",
+        "english": "4/4",
+        "exact_code": "4/4",
+        "paraphrase": "8/8"
+      },
+      "false_abstentions": 0,
+      "not_in_doc_abstained": "8/8",
+      "answers_with_citations": "33/35",
+      "citations_accepted": 38,
+      "citations_rejected": 0,
+      "cited_gold_section": "33/35",
+      "gold_in_context": "35/35",
+      "latency": {
+        "median_s": 3.25,
+        "p90_s": 5.96
+      },
+      "providers": {
+        "groq": 43
+      },
+      "model": {
+        "gemini": "gemini-3.6-flash",
+        "groq": "openai/gpt-oss-120b"
+      }
+    }
+  },
+  "answers": [
+    {
+      "id": "q01",
+      "category": "exact_code",
+      "question": "Apa isi SOP-IT-007 tentang kata sandi?",
+      "answer": "SOP‑IT‑007 menetapkan kebijakan kata sandi sebagai berikut:\n\n- Panjang minimal 12 karakter.  \n- Harus mengandung kombinasi huruf besar, huruf kecil, angka, dan simbol.  \n- Kata sandi wajib diganti setiap 90 hari.  \n- Kata sandi tidak boleh sama dengan 5 kata sandi terakhir yang pernah digunakan.  \n\n[SOP‑IT‑007 – bagian “3.1 Kata Sandi”] [doc:2]",
+      "provider": "groq",
+      "latency_s": 2.37,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q02",
+      "category": "exact_code",
+      "question": "Menurut SOP-FIN-021, berapa batas uang muka perjalanan dinas?",
+      "answer": "Batas uang muka perjalanan dinas adalah maksimal 70 % dari estimasi biaya [doc:1] (SOP‑FIN‑021).",
+      "provider": "groq",
+      "latency_s": 0.94,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q03",
+      "category": "exact_code",
+      "question": "Kapan evaluasi kinerja dilakukan menurut SOP-HR-020?",
+      "answer": "Evaluasi kinerja dilakukan dua kali oleh atasan langsung, yaitu pada minggu ke‑8 dan minggu ke‑12 selama masa percobaan [doc:2]. Dokumen yang mengatur hal ini adalah SOP‑HR‑020.",
+      "provider": "groq",
+      "latency_s": 0.8,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q04",
+      "category": "exact_code",
+      "question": "SOP-HR-014 revisi berapa dan mulai berlaku kapan?",
+      "answer": "SOP‑HR‑014 memiliki revisi **3** dan mulai berlaku pada **1 Januari 2026** [doc:1].",
+      "provider": "groq",
+      "latency_s": 1.63,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q05",
+      "category": "paraphrase",
+      "question": "Berapa lama saya boleh libur dari pekerjaan setiap tahunnya?",
+      "answer": "Menurut SOP CUTI DAN KEHADIRAN KARYAWAN, cuti tahunan yang diberikan kepada karyawan adalah **12 hari kerja per tahun** [doc:2]. Jika Anda telah memenuhi syarat masa kerja (minimal 12 bulan secara terus‑menerus), Anda berhak atas cuti tersebut. (Cuti lain seperti Cuti Besar atau Cuti Melahirkan memiliki ketentuan tersendiri.)",
+      "provider": "groq",
+      "latency_s": 1.07,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q06",
+      "category": "paraphrase",
+      "question": "Kalau saya telat masuk kantor, apa konsekuensinya?",
+      "answer": "Keterlambatan masuk kantor lebih 30 menit tanpa pemberitahuan akan dicatat sebagai **pelanggaran ringan**. Jika Anda mengumpulkan **tiga pelanggaran ringan dalam satu bulan**, hal tersebut setara dengan **satu surat peringatan lisan** [doc:2] (SOP Cuti dan Kehadiran Karyawan, bagian 3.2 Keterlambatan).",
+      "provider": "groq",
+      "latency_s": 1.1,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q07",
+      "category": "paraphrase",
+      "question": "Bolehkah saya mencolokkan flashdisk ke laptop kantor?",
+      "answer": "Tidak, penggunaan flashdisk pada laptop kantor dilarang kecuali Anda sudah mendapat persetujuan tertulis dari Manajer IT [doc:1] (SOP Keamanan Informasi dan Penggunaan Perangkat, bagian 4.2 Media Penyimpanan Eksternal).",
+      "provider": "groq",
+      "latency_s": 0.81,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q08",
+      "category": "paraphrase",
+      "question": "Kalau laptop kantor saya dicuri, apa yang harus saya lakukan?",
+      "answer": "Jika laptop kantor Anda dicuri, SOP Keamanan Informasi mengharuskan Anda :\n\n1. **Melaporkan kehilangan ke tim IT** paling lambat dalam 24 jam sejak diketahui [doc:7].\n2. **Jika laptop berisi data rahasia**, laporkan juga kepada kepolisian [doc:7].\n\nSelain itu, karena SOP menyatakan bahwa *“Laptop perusahaan wajib terpasang enkripsi disk dan antivirus yang diperbarui otomatis”* [doc:1], data pada laptop yang terenkripsi tetap terlindungi meskipun perangkat hilang. Pastikan Anda juga memberi tahu tim keamanan (SOC) jika ada indikasi pelanggaran keamanan lain (misalnya, akses tidak sah) sesuai prosedur pelaporan insiden [doc:4].",
+      "provider": "groq",
+      "latency_s": 1.2,
+      "citations_accepted": 4,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q09",
+      "category": "paraphrase",
+      "question": "Berapa uang saku makan kalau saya bertugas ke Singapura?",
+      "answer": "Uang saku makan untuk penugasan ke luar negeri, termasuk Singapura, adalah **US $50 per hari** [doc:1] (SOP Perjalanan Dinas – Standar Biaya → Uang Makan).",
+      "provider": "groq",
+      "latency_s": 1.11,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q10",
+      "category": "paraphrase",
+      "question": "Siapa yang mendampingi saya di bulan-bulan pertama bekerja?",
+      "answer": "Anda akan didampingi oleh seorang mentor yang ditunjuk oleh Kepala Divisi selama tiga bulan pertama bekerja [doc:1] (dokumen *sop-orientasi-karyawan.docx*, bagian “SOP ORIENTASI DAN MASA PERCOBAAN KARYAWAN BARU > 6. Mentor”).",
+      "provider": "groq",
+      "latency_s": 0.98,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q11",
+      "category": "paraphrase",
+      "question": "Apakah gaji saya dipotong selama masa percobaan?",
+      "answer": "Tidak, selama masa percobaan Anda tetap menerima gaji penuh sesuai yang disepakati, yaitu 100 % dari gaji yang telah ditetapkan [doc:2] (SOP ORIENTASI KARYAWAN BARU > 4. Masa Percobaan > 4.1 Durasi).",
+      "provider": "groq",
+      "latency_s": 0.89,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q12",
+      "category": "paraphrase",
+      "question": "Kapan sisa cuti saya hangus?",
+      "answer": "Sisa cuti Anda tidak dapat diuangkan dan akan hangus pada tanggal 31 Maret tahun berikutnya [doc:1].",
+      "provider": "groq",
+      "latency_s": 2.42,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q13",
+      "category": "confusable",
+      "question": "Berapa batas biaya hotel per malam untuk golongan IV?",
+      "answer": "Batas biaya hotel per malam untuk golongan IV (dan ke atas) adalah **Rp 1.200.000**, sudah termasuk pajak [doc:1].",
+      "provider": "groq",
+      "latency_s": 1.39,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q14",
+      "category": "confusable",
+      "question": "Berapa batas biaya hotel per malam untuk golongan III?",
+      "answer": "Batas biaya hotel untuk golongan III adalah Rp 800.000 per malam (sudah termasuk pajak)【doc:1】.",
+      "provider": "groq",
+      "latency_s": 0.76,
+      "citations_accepted": 0,
+      "citations_rejected": 0,
+      "cited_gold": false,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q15",
+      "category": "confusable",
+      "question": "Berapa uang makan perjalanan dinas dalam negeri per hari?",
+      "answer": "Uang makan perjalanan dinas dalam negeri adalah **Rp150.000 per hari** [doc:1] (dokumen *sop-perjalanan-dinas.docx*, bagian “SOP PERJALANAN DINAS DAN PENGGANTIAN BIAYA > 4. Standar Biaya > 4.3 Uang Makan”).",
+      "provider": "groq",
+      "latency_s": 1.01,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q16",
+      "category": "confusable",
+      "question": "Paling lambat kapan pengajuan cuti harus dilakukan?",
+      "answer": "Pengajuan cuti harus dilakukan paling lambat **7 hari kerja sebelum tanggal pelaksanaan** [doc:1]. Untuk cuti mendadak karena sakit, pemberitahuan dapat dilakukan pada hari yang sama dengan penyerahan surat dokter paling lambat 3 hari kerja setelahnya [doc:1].",
+      "provider": "groq",
+      "latency_s": 1.99,
+      "citations_accepted": 2,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q17",
+      "category": "confusable",
+      "question": "Paling lambat kapan pengajuan perjalanan dinas harus dilakukan?",
+      "answer": "Pengajuan perjalanan dinas harus dilakukan melalui sistem Travel paling lambat **5 hari kerja sebelum keberangkatan** [doc:1] (SOP Perjalanan Dinas, bagian 3. Pengajuan > 3.1 Surat Tugas).",
+      "provider": "groq",
+      "latency_s": 4.19,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q18",
+      "category": "confusable",
+      "question": "Berapa lama cuti melahirkan dan bagaimana pembagiannya?",
+      "answer": "Cuti melahirkan selama **3 bulan**, yang dibagi menjadi **1,5 bulan sebelum melahirkan** dan **1,5 bulan setelah melahirkan** [doc:1].",
+      "provider": "groq",
+      "latency_s": 5.96,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q19",
+      "category": "confusable",
+      "question": "Berapa hari cuti besar dan apa syaratnya?",
+      "answer": "Cuti Besar diberikan selama **30 hari kalender**.  \nSyaratnya:\n- Karyawan harus telah bekerja **6 tahun berturut‑turut** di perusahaan.  \n- Cuti Besar hanya dapat diambil **sekali dalam periode 6 tahun** tersebut.  \n- Persetujuannya adalah **Direktur SDM**.  \n\nSumber: contoh‑sop‑cuti.docx, bagian “4.3 Cuti Besar” [doc:1]; contoh‑sop‑cuti.docx, bagian “Matriks Kewenangan Persetujuan” [doc:2].",
+      "provider": "groq",
+      "latency_s": 6.41,
+      "citations_accepted": 2,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q20",
+      "category": "confusable",
+      "question": "Seberapa sering kata sandi harus diganti?",
+      "answer": "Kata sandi harus diganti setiap 90 hari [doc:1] (SOP Keamanan Informasi – Akun dan Akses, bagian 3.1 Kata Sandi).",
+      "provider": "groq",
+      "latency_s": 5.96,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q21",
+      "category": "confusable",
+      "question": "Kapan cadangan data dijalankan dan berapa lama disimpan?",
+      "answer": "Cadangan data sistem dijalankan **setiap hari pukul 01.00** dan hasil cadangan tersebut disimpan selama **30 hari** [doc:1] (SOP Keamanan Informasi, bagian “5. Data > 5.2 Cadangan Data”).",
+      "provider": "groq",
+      "latency_s": 5.32,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q22",
+      "category": "confusable",
+      "question": "Dalam berapa jam insiden keamanan harus dilaporkan?",
+      "answer": "Insiden keamanan harus dilaporkan dalam **2 jam** sejak diketahui [doc:1].",
+      "provider": "groq",
+      "latency_s": 6.25,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q23",
+      "category": "confusable",
+      "question": "Berapa nilai minimal untuk lulus masa percobaan?",
+      "answer": "Nilai minimal untuk lulus masa percobaan adalah **70 dari 100** [doc:1] (SOP ORIENTASI DAN MASA PERCOBAAN KARYAWAN BARU > 4. Masa Percobaan > 4.2 Evaluasi).",
+      "provider": "groq",
+      "latency_s": 2.46,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q24",
+      "category": "confusable",
+      "question": "Dalam berapa hari uang muka harus dikembalikan jika perjalanan dibatalkan?",
+      "answer": "Uang muka harus dikembalikan dalam **3 hari kerja** setelah perjalanan dibatalkan [doc:1] (SOP Perjalanan Dinas, bagian “6. Pembatalan Perjalanan”).",
+      "provider": "groq",
+      "latency_s": 5.22,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q25",
+      "category": "confusable",
+      "question": "Kapan klaim penggantian biaya perjalanan harus diajukan?",
+      "answer": "Klaim penggantian biaya perjalanan harus diajukan paling lama **10 hari kerja setelah karyawan kembali**, dengan melampirkan bukti asli melalui sistem Finance [doc:1] (SOP Perjalanan Dinas – Penggantian Biaya).",
+      "provider": "groq",
+      "latency_s": 2.41,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q26",
+      "category": "confusable",
+      "question": "Siapa yang menyetujui cuti tahunan lebih dari 5 hari berturut-turut?",
+      "answer": "Kepala Divisi adalah penyetuju untuk cuti tahunan yang diambil lebih dari 5 hari kerja berturut‑turut【doc:1】【doc:2】. (SOP Cuti dan Kehadiran Karyawan, bagian 4.2 & 6)",
+      "provider": "groq",
+      "latency_s": 4.25,
+      "citations_accepted": 0,
+      "citations_rejected": 0,
+      "cited_gold": false,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q27",
+      "category": "confusable",
+      "question": "Apakah saya boleh naik kelas bisnis untuk penerbangan 6 jam?",
+      "answer": "Tidak boleh naik kelas bisnis untuk penerbangan 6 jam kecuali Anda termasuk **golongan IV ke atas**. SOP Perjalanan Dinas menyatakan bahwa kelas bisnis hanya diperuntukkan bagi golongan IV ke atas pada penerbangan dengan durasi lebih dari 4 jam [doc:1]. Jika Anda tidak berada di golongan tersebut, tiket harus dibeli kelas ekonomi.",
+      "provider": "groq",
+      "latency_s": 3.56,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q28",
+      "category": "confusable",
+      "question": "Untuk akses apa saja autentikasi dua faktor wajib?",
+      "answer": "Autentikasi dua faktor (MFA) wajib digunakan untuk mengakses **email, VPN, dan sistem keuangan** [doc:1] (SOP Keamanan Informasi dan Penggunaan Perangkat, bagian *Akun dan Akses* > 3.2).",
+      "provider": "groq",
+      "latency_s": 4.42,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q29",
+      "category": "confusable",
+      "question": "Berapa lama masa tenggang akun yang belum memakai MFA?",
+      "answer": "Masa tenggang untuk akun yang belum menggunakan MFA adalah 14 hari [doc:1].",
+      "provider": "groq",
+      "latency_s": 4.75,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q30",
+      "category": "confusable",
+      "question": "Pelatihan kepatuhan wajib selesai dalam berapa hari?",
+      "answer": "Pelatihan kepatuhan dan keamanan informasi wajib diselesaikan dalam **14 hari kerja pertama** setelah mulai bekerja [doc:1] (dokumen: *sop-orientasi-karyawan.docx*, bagian: “SOP ORIENTASI DAN MASA PERCOBAAN KARYAWAN BARU > 5. Pelatihan Wajib”).",
+      "provider": "groq",
+      "latency_s": 3.87,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q31",
+      "category": "confusable",
+      "question": "Siapa yang menyetujui cuti besar?",
+      "answer": "Cuti Besar disetujui oleh **Direktur SDM** [doc:1].",
+      "provider": "groq",
+      "latency_s": 5.52,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q32",
+      "category": "english",
+      "question": "How many days of annual leave do employees get?",
+      "answer": "Employees receive **12 working days of annual leave per year** [doc:1].",
+      "provider": "groq",
+      "latency_s": 3.25,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q33",
+      "category": "english",
+      "question": "What is the password policy?",
+      "answer": "The password policy requires a minimum length of 12 characters and must include uppercase letters, lowercase letters, numbers, and symbols. Passwords must be changed every 90 days and cannot repeat any of the 5 most recent passwords [doc:3].",
+      "provider": "groq",
+      "latency_s": 2.86,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q34",
+      "category": "english",
+      "question": "How quickly must a lost laptop be reported?",
+      "answer": "A lost device must be reported to the IT team within 24 hours (1 × 24 h). If the device contains confidential data, it must also be reported to the police. [doc:1] (SOP Keamanan Informasi – Perangkat > 4.3 Kehilangan Perangkat)",
+      "provider": "groq",
+      "latency_s": 4.95,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "q35",
+      "category": "english",
+      "question": "What time does orientation start on the first day?",
+      "answer": "Orientation begins at 09:00 on the first day [doc:1] (SOP ORIENTASI KARYAWAN BARU – 3. Hari Pertama > 3.1 Orientasi).",
+      "provider": "groq",
+      "latency_s": 6.29,
+      "citations_accepted": 1,
+      "citations_rejected": 0,
+      "cited_gold": true,
+      "gold_in_context": true,
+      "abstained": false,
+      "correct": true
+    },
+    {
+      "id": "n01",
+      "category": "not_in_doc",
+      "question": "Berapa besar tunjangan hari raya (THR) karyawan?",
+      "answer": "Maaf, informasi mengenai besaran Tunjangan Hari Raya (THR) tidak tercantum dalam dokumen yang Anda unggah. Silakan merujuk ke kebijakan atau SOP lain yang mengatur THR, atau menghubungi bagian HRD untuk detailnya.",
+      "provider": "groq",
+      "latency_s": 5.21,
+      "citations_accepted": 0,
+      "citations_rejected": 0,
+      "cited_gold": null,
+      "gold_in_context": null,
+      "abstained": true,
+      "correct": true
+    },
+    {
+      "id": "n02",
+      "category": "not_in_doc",
+      "question": "Bagaimana kebijakan bekerja dari rumah (WFH)?",
+      "answer": "Informasi mengenai kebijakan bekerja dari rumah (WFH) tidak terdapat dalam dokumen yang Anda unggah. Untuk detailnya, silakan merujuk ke dokumen atau kebijakan lain yang mengatur WFH di organisasi Anda.",
+      "provider": "groq",
+      "latency_s": 2.94,
+      "citations_accepted": 0,
+      "citations_rejected": 0,
+      "cited_gold": null,
+      "gold_in_context": null,
+      "abstained": true,
+      "correct": true
+    },
+    {
+      "id": "n03",
+      "category": "not_in_doc",
+      "question": "Berapa gaji pokok seorang manajer?",
+      "answer": "Maaf, informasi mengenai gaji pokok seorang manajer tidak terdapat dalam dokumen yang diunggah. Silakan menghubungi bagian HR atau pihak berwenang di organisasi Anda untuk detail tersebut.",
+      "provider": "groq",
+      "latency_s": 4.63,
+      "citations_accepted": 0,
+      "citations_rejected": 0,
+      "cited_gold": null,
+      "gold_in_context": null,
+      "abstained": true,
+      "correct": true
+    },
+    {
+      "id": "n04",
+      "category": "not_in_doc",
+      "question": "Bagaimana prosedur pengunduran diri karyawan?",
+      "answer": "Maaf, informasi mengenai prosedur pengunduran diri karyawan tidak terdapat dalam dokumen yang Anda unggah. Silakan merujuk ke kebijakan atau SOP terkait pengunduran diri yang berlaku di organisasi Anda, atau mengonfirmasi ke pihak HR / manajemen terkait.",
+      "provider": "groq",
+      "latency_s": 6.02,
+      "citations_accepted": 0,
+      "citations_rejected": 0,
+      "cited_gold": null,
+      "gold_in_context": null,
+      "abstained": true,
+      "correct": true
+    },
+    {
+      "id": "n05",
+      "category": "not_in_doc",
+      "question": "Apakah perusahaan menyediakan asuransi kesehatan untuk keluarga karyawan?",
+      "answer": "Tidak ada informasi mengenai penyediaan asuransi kesehatan untuk keluarga karyawan dalam dokumen yang Anda unggah. Jika Anda memerlukan kepastian, silakan mengonfirmasi ke bagian HR atau merujuk pada kebijakan asuransi perusahaan yang bersangkutan.",
+      "provider": "groq",
+      "latency_s": 3.01,
+      "citations_accepted": 0,
+      "citations_rejected": 0,
+      "cited_gold": null,
+      "gold_in_context": null,
+      "abstained": true,
+      "correct": true
+    },
+    {
+      "id": "n06",
+      "category": "not_in_doc",
+      "question": "What is the dress code policy?",
+      "answer": "The uploaded documents do not contain any information about a dress code policy.",
+      "provider": "groq",
+      "latency_s": 3.8,
+      "citations_accepted": 0,
+      "citations_rejected": 0,
+      "cited_gold": null,
+      "gold_in_context": null,
+      "abstained": true,
+      "correct": true
+    },
+    {
+      "id": "n07",
+      "category": "not_in_doc",
+      "question": "Berapa tarif uang lembur per jam?",
+      "answer": "Maaf, dokumen yang Anda unggah tidak memuat informasi mengenai tarif uang lembur per jam. Jika diperlukan, silakan mengonfirmasi ke pihak terkait di organisasi Anda.",
+      "provider": "groq",
+      "latency_s": 4.25,
+      "citations_accepted": 0,
+      "citations_rejected": 0,
+      "cited_gold": null,
+      "gold_in_context": null,
+      "abstained": true,
+      "correct": true
+    },
+    {
+      "id": "n08",
+      "category": "not_in_doc",
+      "question": "Kapan kantor tutup untuk libur Natal?",
+      "answer": "Informasi mengenai penutupan kantor untuk libur Natal tidak tercantum dalam dokumen yang Anda unggah. Silakan mengonfirmasi jadwal libur Natal ke pihak terkait di organisasi Anda.",
+      "provider": "groq",
+      "latency_s": 5.14,
+      "citations_accepted": 0,
+      "citations_rejected": 0,
+      "cited_gold": null,
+      "gold_in_context": null,
+      "abstained": true,
+      "correct": true
+    }
+  ]
+}
